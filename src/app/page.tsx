@@ -216,14 +216,14 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateRows: '2fr 1fr', gap: '16px' }}>
             <ScrollReveal delay={0}>
               <div style={{ overflow: 'hidden', borderRadius: '8px', height: '360px' }}>
-                <img src="/1.jpg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
+                <img src="/11.jpeg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
               </div>
             </ScrollReveal>
             <ScrollReveal delay={100}>
               <div style={{ overflow: 'hidden', borderRadius: '8px', height: '180px' }}>
-                <img src="/2.jpg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
+                <img src="/4.jpeg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
               </div>
@@ -233,7 +233,7 @@ export default function HomePage() {
           {/* Centre column — large feature */}
           <ScrollReveal delay={150}>
             <div style={{ overflow: 'hidden', borderRadius: '8px', height: '556px' }}>
-              <img src="/3.jpg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
+              <img src="/1.jpg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
                 onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
                 onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
             </div>
@@ -243,14 +243,14 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateRows: '1fr 2fr', gap: '16px' }}>
             <ScrollReveal delay={100}>
               <div style={{ overflow: 'hidden', borderRadius: '8px', height: '180px' }}>
-                <img src="/4.jpeg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
+                <img src="/7.jpeg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0}>
               <div style={{ overflow: 'hidden', borderRadius: '8px', height: '360px' }}>
-                <img src="/5.jpeg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
+                <img src="/2.jpg" alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
               </div>
@@ -261,7 +261,7 @@ export default function HomePage() {
 
         {/* Bottom row — 4 equal images */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
-          {['9.jpeg','7.jpeg','8.jpeg','10.jpeg'].map((img, i) => (
+          {['5.jpeg','3.jpg','10.jpeg','8.jpeg'].map((img, i) => (
             <ScrollReveal key={img} delay={i * 80}>
               <div style={{ overflow: 'hidden', borderRadius: '8px', height: '220px' }}>
                 <img src={`/${img}`} alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}
@@ -274,7 +274,7 @@ export default function HomePage() {
 
         {/* Last row — 3 wide images */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', maxWidth: '1200px', margin: '0 auto', padding: '16px 16px 32px' }}>
-          {['1.jpg','11.jpeg','coffeeplantandcake.jpg'].map((img, i) => (
+          {['9.jpeg','coffeeplantandcake.jpg','6.jpeg'].map((img, i) => (
             <ScrollReveal key={img} delay={i * 100}>
               <div style={{ overflow: 'hidden', borderRadius: '8px', height: '240px' }}>
                 <img src={`/${img}`} alt="Himalayan SIP" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', display: 'block' }}

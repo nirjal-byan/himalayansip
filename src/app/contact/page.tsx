@@ -33,9 +33,30 @@ export default function ContactPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSending(true);
-        await new Promise((r) => setTimeout(r, 1500));
-        setSending(false);
-        setSent(true);
+        
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/himalayansip@gmail.com", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(form)
+            });
+            
+            if (response.ok) {
+                setSent(true);
+            } else {
+                // If it fails (e.g. not activated yet), we still want to show a graceful error
+                const data = await response.json();
+                throw new Error(data.message || "Failed to send message");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Oops! There was a problem sending your message. Please try again or email us directly at himalayansip@gmail.com");
+        } finally {
+            setSending(false);
+        }
     };
 
     return (

@@ -10,10 +10,10 @@ import { HiMenuAlt3, HiX } from 'react-icons/hi';
 const leftLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/menu', label: 'Menu' },
 ];
 
 const rightLinks = [
+    { href: '/menu', label: 'Menu' },
     { href: '/contact', label: 'Contact' },
 ];
 
@@ -97,11 +97,6 @@ export default function Navbar() {
                             </Link>
                         </li>
                     ))}
-                    <li>
-                        <Link href="/menu" className="btn-pill-primary">
-                            Order Now
-                        </Link>
-                    </li>
                 </ul>
             </div>
 
@@ -147,11 +142,6 @@ export default function Navbar() {
                                     </Link>
                                 </li>
                             ))}
-                            <li>
-                                <Link href="/menu" className="btn-primary" style={{ fontSize: '13px', display: 'block', width: '100%', textAlign: 'center' }} onClick={() => setMenuOpen(false)}>
-                                    Order Now
-                                </Link>
-                            </li>
                         </ul>
                     </motion.div>
                 )}
