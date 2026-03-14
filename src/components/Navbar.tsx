@@ -79,7 +79,7 @@ export default function Navbar() {
                         transition={{ type: 'spring', stiffness: 300 }}
                     >
                         <Image
-                            src="/logo.png"
+                            src={(pathname === '/' && !scrolled) ? "/logo2.png" : "/logo.png"}
                             alt="Himalayan SIP"
                             width={96}
                             height={96}
@@ -109,7 +109,7 @@ export default function Navbar() {
             <div className="nav-mobile-header section-container" style={{ alignItems: 'center', justifyContent: 'space-between', padding: '12px 24px' }}>
                 <Link href="/" style={{ textDecoration: 'none' }}>
                     <Image
-                        src="/logo.png"
+                        src={(pathname === '/' && !scrolled) ? "/logo2.png" : "/logo.png"}
                         alt="Himalayan SIP"
                         width={60}
                         height={60}

@@ -30,16 +30,16 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                            <Image src="/logo.png" alt="Himalayan SIP Logo" width={80} height={80} style={{ borderRadius: '50%' }} />
+                            <Image src="/logo2.png" alt="Himalayan SIP Logo" width={80} height={80} style={{ borderRadius: '50%' }} />
                         </div>
                         <p style={{ color: '#D4BC94', fontSize: '13px', lineHeight: 1.7, marginBottom: '20px' }}>
                             A nature-based specialty coffee café and plant nursery nestled in the heart of Lalitpur. Every sip tells a story.
                         </p>
                         <div style={{ display: 'flex', gap: '12px' }}>
                             {[
-                                { icon: <FaInstagram />, href: 'https://instagram.com' },
-                                { icon: <FaFacebookF />, href: 'https://facebook.com' },
-                                { icon: <FaTripadvisor />, href: 'https://tripadvisor.com' },
+                                { icon: <FaInstagram />, href: 'https://www.instagram.com/floristahut.himalayansip/' },
+                                { icon: <FaFacebookF />, href: 'https://www.facebook.com/floristahut/' },
+                                { icon: <FaTripadvisor />, href: 'https://www.tripadvisor.com/Restaurant_Review-g315764-d27775243-Reviews-Himalayan_Sip-Patan_Lalitpur_Kathmandu_Valley_Bagmati_Zone_Central_Region.html' },
                             ].map(({ icon, href }, i) => (
                                 <a key={i} href={href} target="_blank" rel="noreferrer"
                                     style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid #6D4C2E', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4BC94', textDecoration: 'none', transition: 'all 0.3s', fontSize: '14px' }}
