@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { GiCoffeeBeans } from 'react-icons/gi';
 import { FaStar, FaQuoteRight } from 'react-icons/fa';
@@ -55,9 +55,43 @@ export default function HomePage() {
   ];
 
   const [activeSet, setActiveSet] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
   const reviewsPerPage = 3;
   const totalSets = Math.ceil(allReviews.length / reviewsPerPage);
   const currentReviews = allReviews.slice(activeSet * reviewsPerPage, (activeSet + 1) * reviewsPerPage);
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setActiveSet((prev) => (prev + newDirection + totalSets) % totalSets);
+  };
+
+  // Auto-transition reviews every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      paginate(1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [totalSets]);
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 500 : -500,
+      opacity: 0,
+      filter: 'blur(10px)'
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      filter: 'blur(0px)'
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 500 : -500,
+      opacity: 0,
+      filter: 'blur(10px)'
+    })
+  };
 
   return (
     <div className="page-transition">
@@ -253,7 +287,7 @@ export default function HomePage() {
       </section>
       
       {/* ══ TESTIMONIALS ═══════════════════════════════════════════════ */}
-      <section style={{ position: 'relative', zIndex: 10, padding: '120px 0', background: 'var(--c-cream)' }}>
+      <section style={{ position: 'relative', zIndex: 10, padding: '120px 0', background: 'var(--c-cream)', overflow: 'hidden' }}>
         <div className="section-container">
           <ScrollReveal>
             <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -266,46 +300,65 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', position: 'relative' }}>
             <button 
-              onClick={() => setActiveSet((activeSet - 1 + totalSets) % totalSets)}
-              style={{ background: 'none', border: '1px solid var(--c-brown-200)', borderRadius: '50%', width: '48px', height: '48px', minWidth: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--c-brown-500)', transition: 'all 0.3s ease', zIndex: 5 }}
+              onClick={() => paginate(-1)}
+              style={{ background: 'none', border: '1px solid var(--c-brown-200)', borderRadius: '50%', width: '48px', height: '48px', minWidth: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--c-brown-500)', transition: 'all 0.3s ease', zIndex: 10 }}
               onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--c-orange)', e.currentTarget.style.color = 'var(--c-orange)', e.currentTarget.style.background = 'rgba(255,108,61,0.05)')}
               onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--c-brown-200)', e.currentTarget.style.color = 'var(--c-brown-500)', e.currentTarget.style.background = 'none')}
             >
               <FiChevronLeft fontSize="24px" />
             </button>
 
-            <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-              {currentReviews.map((review, i) => (
-                <ScrollReveal key={review.name} delay={i * 150}>
-                  <div style={{ 
-                    background: '#FFFFFF', 
-                    borderRadius: '16px', 
-                    padding: '40px 32px', 
-                    border: '1px solid var(--c-brown-100)', 
-                    position: 'relative',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}>
-                    <FaQuoteRight style={{ position: 'absolute', top: '32px', right: '32px', color: 'var(--c-orange)', opacity: 0.15, fontSize: '24px' }} />
-                    
-                    <p style={{ color: 'var(--c-brown-600)', fontSize: '15px', lineHeight: 1.8, marginBottom: '32px', flex: 1, fontStyle: 'italic', marginTop: '12px' }}>
-                      &quot;{review.text}&quot;
-                    </p>
+            <div style={{ flex: 1, position: 'relative', minHeight: '380px', overflow: 'hidden' }}>
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={activeSet}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: 'spring', stiffness: 400, damping: 40, mass: 0.8 },
+                    opacity: { duration: 0.15 }
+                  }}
+                  style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+                    gap: '24px',
+                    width: '100%'
+                  }}
+                >
+                  {currentReviews.map((review) => (
+                    <div key={review.name} style={{ 
+                      background: '#FFFFFF', 
+                      borderRadius: '16px', 
+                      padding: '40px 32px', 
+                      border: '1px solid var(--c-brown-100)', 
+                      position: 'relative',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column'
+                    }}>
+                      <FaQuoteRight style={{ position: 'absolute', top: '32px', right: '32px', color: 'var(--c-orange)', opacity: 0.15, fontSize: '24px' }} />
+                      
+                      <p style={{ color: 'var(--c-brown-600)', fontSize: '15px', lineHeight: 1.8, marginBottom: '32px', flex: 1, fontStyle: 'italic', marginTop: '12px' }}>
+                        &quot;{review.text}&quot;
+                      </p>
 
-                    <div>
-                      <p style={{ fontWeight: 700, color: 'var(--c-brown-800)', fontSize: '14px', marginBottom: '2px' }}>{review.name}</p>
+                      <div>
+                        <p style={{ fontWeight: 700, color: 'var(--c-brown-800)', fontSize: '14px', marginBottom: '2px' }}>{review.name}</p>
+                      </div>
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+                  ))}
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             <button 
-              onClick={() => setActiveSet((activeSet + 1) % totalSets)}
-              style={{ background: 'none', border: '1px solid var(--c-brown-200)', borderRadius: '50%', width: '48px', height: '48px', minWidth: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--c-brown-500)', transition: 'all 0.3s ease', zIndex: 5 }}
+              onClick={() => paginate(1)}
+              style={{ background: 'none', border: '1px solid var(--c-brown-200)', borderRadius: '50%', width: '48px', height: '48px', minWidth: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--c-brown-500)', transition: 'all 0.3s ease', zIndex: 10 }}
               onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--c-orange)', e.currentTarget.style.color = 'var(--c-orange)', e.currentTarget.style.background = 'rgba(255,108,61,0.05)')}
               onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--c-brown-200)', e.currentTarget.style.color = 'var(--c-brown-500)', e.currentTarget.style.background = 'none')}
             >
@@ -317,7 +370,10 @@ export default function HomePage() {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '64px' }}>
             {[...Array(totalSets)].map((_, i) => (
               <button key={i} 
-                onClick={() => setActiveSet(i)}
+                onClick={() => {
+                  setDirection(i > activeSet ? 1 : -1);
+                  setActiveSet(i);
+                }}
                 style={{ 
                   width: activeSet === i ? '24px' : '8px', 
                   height: '8px', 
