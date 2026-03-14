@@ -1,26 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
 @import "tailwindcss";
 
+/* ── CSS Custom Properties ─────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --c-brown-50: #FDFAF5;
+  --c-brown-100: #F5EFE0;
+  --c-brown-200: #E8DCCB;
+  --c-brown-300: #C9A87C;
+  --c-brown-400: #A67C52;
+  --c-brown-500: #7A5C3E;
+  --c-brown-600: #6D4C2E;
+  --c-brown-700: #5C4033;
+  --c-brown-800: #3E2723;
+  --c-brown-900: #1C0F0A;
+  --c-orange: #C17B3A;
+  --c-orange-lt: #D99A5A;
+  --c-cream: #FFFFFF;
+  --c-cream-dk: #FFFFFF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--c-cream);
+  color: var(--c-brown-800);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-brown-700);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-orange);
+}
+
+::selection {
+  background: var(--c-orange);
+  color: #fff;
+}
+
+/* ── Typography helpers ─────────────────────────────────────────────── */
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-sans-h {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Color helpers ──────────────────────────────────────────────────── */
+.text-orange {
+  color: var(--c-orange);
+}
+
+.text-cream {
+  color: var(--c-cream);
+}
+
+.text-brown-800 {
+  color: var(--c-brown-800);
+}
+
+.text-brown-700 {
+  color: var(--c-brown-700);
+}
+
+.text-brown-600 {
+  color: var(--c-brown-600);
+}
+
+.text-brown-500 {
+  color: var(--c-brown-500);
+}
+
+.text-brown-200 {
+  color: var(--c-brown-200);
+}
+
+.bg-cream {
+  background: var(--c-cream);
+}
+
+.bg-cream-dk {
+  background: var(--c-cream-dk);
+}
+
+.bg-brown-800 {
+  background: var(--c-brown-800);
+}
+
+.border-brown-100 {
+  border-color: var(--c-brown-100);
+}
+
+.border-brown-600 {
+  border-color: var(--c-brown-600);
+}
+
+/* ── Page transition ────────────────────────────────────────────────── */
+.page-transition {
+  animation: fadeInPage 0.5s ease-out;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Scroll reveal ──────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--c-orange);
+  color: #fff;
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid var(--c-orange);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--c-orange);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--c-brown-800);
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid var(--c-brown-200);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  border-color: var(--c-orange);
+  color: var(--c-orange);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-light {
+  background: transparent;
+  color: #fff;
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-secondary-light:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Pill buttons for major CTAs */
+.btn-pill-primary {
+  background: var(--c-orange);
+  color: #fff;
+  border-radius: 50px;
+  padding: 12px 36px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid var(--c-orange);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-pill-primary:hover {
+  background: transparent;
+  color: var(--c-orange);
+  border-color: var(--c-orange);
+  transform: translateY(-2px);
+}
+
+.btn-pill-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 50px;
+  padding: 12px 36px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.btn-pill-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Card hover ─────────────────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+}
+
+/* ── Badge ──────────────────────────────────────────────────────────── */
+.badge-signature {
+  background: var(--c-orange);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* ── Floating label form ─────────────────────────────────────────────── */
+.form-group {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--c-brown-300);
+  padding: 14px 0 8px;
+  font-size: 15px;
+  color: var(--c-brown-800);
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-group textarea {
+  resize: none;
+  height: 110px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: var(--c-orange);
+}
+
+.form-group label {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  font-size: 14px;
+  color: var(--c-brown-500);
+  transition: all 0.3s;
+  pointer-events: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-group input:focus~label,
+.form-group input:not(:placeholder-shown)~label,
+.form-group textarea:focus~label,
+.form-group textarea:not(:placeholder-shown)~label {
+  top: -12px;
+  font-size: 11px;
+  color: var(--c-orange);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ── Section container ───────────────────────────────────────────────── */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ── Responsive navbar ───────────────────────────────────────────────── */
+/* Show desktop nav, hide hamburger by default */
+.nav-desktop {
+  display: flex;
+}
+
+.nav-mobile-btn {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .nav-desktop {
+    display: none !important;
+  }
+
+  .nav-mobile-btn {
+    display: block !important;
+  }
+}
+
+/* Tailwind v4 compatibility — explicit responsive helpers */
+@media (min-width: 768px) {
+  .hidden.md\:flex {
+    display: flex !important;
+  }
+
+  .md\:hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden.md\:flex {
+    display: none !important;
+  }
+
+  .md\:hidden {
+    display: block !important;
+  }
+}
+
+/* ── Responsive grid fixes ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .section-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ── Milestone timeline mobile ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .milestone-line {
+    display: none !important;
+  }
 }
