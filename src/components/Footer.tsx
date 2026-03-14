@@ -100,7 +100,7 @@ export default function Footer() {
                             </li>
                             <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 <HiMail style={{ color: 'var(--c-orange)' }} />
-                                <a href="mailto:hello@himalayansip.com" style={{ color: '#D4BC94', textDecoration: 'none', fontSize: '13px' }}>hello@himalayansip.com</a>
+                                <a href="mailto:himalayansip@gmail.com" style={{ color: '#D4BC94', textDecoration: 'none', fontSize: '13px' }}>himalayansip@gmail.com</a>
                             </li>
                         </ul>
                     </div>

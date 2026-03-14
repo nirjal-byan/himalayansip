@@ -43,7 +43,6 @@ export default function ContactPage() {
             {/* Hero */}
             <section style={{ position: 'relative', paddingTop: '160px', paddingBottom: '96px', textAlign: 'center', background: 'var(--c-cream)' }}>
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ padding: '0 24px' }}>
-                    <p className="font-script" style={{ color: 'var(--c-orange)', fontSize: '24px', marginBottom: '6px' }}>We Would Love to Hear From You</p>
                     <h1 className="font-serif" style={{ color: 'var(--c-brown-800)', fontSize: 'clamp(32px, 6vw, 60px)', fontWeight: 700, marginBottom: '20px' }}>Get In Touch</h1>
                     <BeanDivider />
                     <p style={{ color: 'var(--c-brown-500)', fontSize: '16px', maxWidth: '500px', margin: '0 auto', lineHeight: 1.7 }}>Whether you have a question, a reservation request, or just want to say hello — our doors and inbox are always open.</p>
@@ -53,36 +52,36 @@ export default function ContactPage() {
             {/* Content */}
             <section style={{ padding: '96px 0', background: 'var(--c-cream)' }}>
                 <div className="section-container">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '64px', alignItems: 'flex-start' }}>
 
                         {/* Left: Info */}
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
                             <ScrollReveal>
-                                <h2 className="font-serif" style={{ color: 'var(--c-brown-800)', fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 700, marginBottom: '24px' }}>Visit Himalayan SIP</h2>
-
-                                {[
-                                    { icon: <HiLocationMarker style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Location', lines: ['Himalayan SIP Café', 'Chyasal, Lalitpur', 'Nepal'] },
-                                    { icon: <HiPhone style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Phone', lines: ['+977 984 9671874'] },
-                                    { icon: <HiMail style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Email', lines: ['hello@himalayansip.com', 'reservations@himalayansip.com'] },
-                                ].map((tile) => (
-                                    <div key={tile.title} className="card-hover"
-                                        style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', background: '#fff', borderRadius: '16px', padding: '20px 24px', border: '1px solid var(--c-brown-100)', marginBottom: '12px' }}>
-                                        <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(242,140,40,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{tile.icon}</div>
-                                        <div>
-                                            <p style={{ fontWeight: 600, color: 'var(--c-brown-800)', fontSize: '14px', marginBottom: '4px' }}>{tile.title}</p>
-                                            {tile.lines.map((l, i) => <p key={i} style={{ color: 'var(--c-brown-500)', fontSize: '13px' }}>{l}</p>)}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+                                    {[
+                                        { icon: <HiLocationMarker style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Location', lines: ['Himalayan SIP Café', 'Chyasal, Lalitpur', 'Nepal'] },
+                                        { icon: <HiPhone style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Phone', lines: ['+977 984 9671874'] },
+                                        { icon: <HiMail style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Email', lines: ['himalayansip@gmail.com'] },
+                                    ].map((tile) => (
+                                        <div key={tile.title} 
+                                            style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', padding: '12px 0' }}>
+                                            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(242,140,40,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{tile.icon}</div>
+                                            <div>
+                                                <p style={{ fontWeight: 600, color: 'var(--c-brown-800)', fontSize: '14px', marginBottom: '4px' }}>{tile.title}</p>
+                                                {tile.lines.map((l, i) => <p key={i} style={{ color: 'var(--c-brown-500)', fontSize: '13px' }}>{l}</p>)}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
 
                                 {/* Hours */}
-                                <div style={{ background: '#fff', borderRadius: '16px', padding: '24px', border: '1px solid var(--c-brown-100)' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+                                <div style={{ paddingTop: '20px' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
                                         <HiClock style={{ color: 'var(--c-orange)', fontSize: '20px' }} />
-                                        <h3 className="font-serif" style={{ fontSize: '18px', fontWeight: 700, color: 'var(--c-brown-800)' }}>Opening Hours</h3>
+                                        <h3 className="font-serif" style={{ fontSize: '20px', fontWeight: 700, color: 'var(--c-brown-800)' }}>Opening Hours</h3>
                                     </div>
                                     {hours.map((h) => (
-                                        <div key={h.days} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid var(--c-brown-50)', fontSize: '13px' }}>
+                                        <div key={h.days} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--c-brown-50)', fontSize: '14px' }}>
                                             <span style={{ color: 'var(--c-brown-600)', fontWeight: 500 }}>{h.days}</span>
                                             <span style={{ color: 'var(--c-orange)', fontWeight: 700 }}>{h.time}</span>
                                         </div>
@@ -92,8 +91,8 @@ export default function ContactPage() {
                         </div>
 
                         {/* Right: Form */}
-                        <ScrollReveal delay={150}>
-                            <div style={{ background: '#fff', borderRadius: '24px', padding: '48px 40px', border: '1px solid var(--c-brown-100)', boxShadow: '0 10px 40px rgba(62,39,35,0.06)' }}>
+                        <ScrollReveal delay={200}>
+                            <div>
                                 <h2 className="font-serif" style={{ color: 'var(--c-brown-800)', fontSize: 'clamp(22px, 3vw, 30px)', fontWeight: 700, marginBottom: '6px' }}>Send Us a Message</h2>
                                 <p style={{ color: 'var(--c-brown-500)', fontSize: '13px', marginBottom: '36px' }}>We typically respond within 4–6 hours. ☕</p>
 
@@ -148,10 +147,10 @@ export default function ContactPage() {
             {/* Map */}
             <section style={{ padding: '0 0 80px', background: 'var(--c-cream-dk)' }}>
                 <div className="section-container">
-                    <ScrollReveal>
-                        <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.1)', border: '4px solid #fff' }}>
+                    <ScrollReveal delay={200}>
+                        <div style={{ borderRadius: '0', overflow: 'hidden' }}>
                             <iframe title="Himalayan SIP Café Map"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.15370688127!2d85.33095!3d27.67517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19dcbb3d70f5%3A0x2b7a84e90f1bcc84!2sChyasal%2C%20Lalitpur%2044600!5e0!3m2!1sen!2s!4v1700000000001!5m2!1sen!2s"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.3906574560306!2d85.3353484!3d27.674318299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19806e63fd13%3A0x9ea5930c087495b!2sHimalayan%20SIP!5e0!3m2!1sen!2snp!4v1773477007420!5m2!1sen!2snp"
                                 width="100%" height="420" style={{ border: 0, display: 'block' }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
                         </div>
                     </ScrollReveal>
