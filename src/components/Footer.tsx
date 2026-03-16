@@ -2,17 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { GiCoffeeBeans } from 'react-icons/gi';
+import BeanDivider from './BeanDivider';
 import { FaInstagram, FaFacebookF, FaTripadvisor } from 'react-icons/fa';
 import { HiPhone, HiMail, HiLocationMarker, HiClock } from 'react-icons/hi';
-
-const BeanDivider = () => (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', margin: '12px 0' }}>
-        {[0.5, 0.8, 1, 0.8, 0.5].map((op, i) => (
-            <GiCoffeeBeans key={i} style={{ color: 'var(--c-orange)', opacity: op, fontSize: i === 2 ? '18px' : '13px' }} />
-        ))}
-    </div>
-);
 
 export default function Footer() {
     return (
@@ -30,7 +22,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                            <Image src="/logo2.png" alt="Himalayan SIP Logo" width={80} height={80} style={{ borderRadius: '50%' }} />
+                            <Image src="/logo2.png" alt="Himalayan SIP Logo" width={140} height={140} style={{ borderRadius: '12px' }} />
                         </div>
                         <p style={{ color: '#D4BC94', fontSize: '13px', lineHeight: 1.7, marginBottom: '20px' }}>
                             A nature-based specialty coffee café and plant nursery nestled in the heart of Lalitpur. Every sip tells a story.
@@ -110,9 +102,7 @@ export default function Footer() {
                 <div style={{ borderTop: '1px solid #5C4033', paddingTop: '24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
                     <p style={{ color: '#8B6340', fontSize: '12px' }}>© {new Date().getFullYear()} Himalayan SIP. All rights reserved.</p>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#8B6340', fontSize: '12px' }}>
-                        <GiCoffeeBeans style={{ color: 'var(--c-orange)' }} />
-                        <span>Crafted with love in Lalitpur</span>
-                        <GiCoffeeBeans style={{ color: 'var(--c-orange)' }} />
+                        <BeanDivider />
                     </div>
                 </div>
             </div>

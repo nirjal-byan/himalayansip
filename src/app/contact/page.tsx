@@ -33,17 +33,17 @@ export default function ContactPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSending(true);
-        
+
         try {
             const response = await fetch("https://formsubmit.co/ajax/himalayansip@gmail.com", {
                 method: "POST",
-                headers: { 
+                headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
                 body: JSON.stringify(form)
             });
-            
+
             if (response.ok) {
                 setSent(true);
             } else {
@@ -84,7 +84,7 @@ export default function ContactPage() {
                                         { icon: <HiPhone style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Phone', lines: ['+977 984 9671874'] },
                                         { icon: <HiMail style={{ color: 'var(--c-orange)', fontSize: '20px' }} />, title: 'Email', lines: ['himalayansip@gmail.com'] },
                                     ].map((tile) => (
-                                        <div key={tile.title} 
+                                        <div key={tile.title}
                                             style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', padding: '12px 0' }}>
                                             <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(242,140,40,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{tile.icon}</div>
                                             <div>

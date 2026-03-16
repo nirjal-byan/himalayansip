@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import BeanDivider from '@/components/BeanDivider';
 
 export default function MenuPage() {
     return (
@@ -11,6 +12,7 @@ export default function MenuPage() {
                     <ScrollReveal>
                         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                             <h1 className="font-serif" style={{ color: 'var(--c-brown-800)', fontSize: 'clamp(32px, 6vw, 48px)', fontWeight: 700, marginBottom: '16px' }}>Our Menu</h1>
+                            <BeanDivider margin="0 0 16px" />
                             <p style={{ color: 'var(--c-brown-500)', fontSize: '16px', maxWidth: '600px', margin: '0 auto' }}>
                                 View our full selections below.
                             </p>

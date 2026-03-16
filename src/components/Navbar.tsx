@@ -32,7 +32,7 @@ export default function Navbar() {
         const isHomePage = pathname === '/';
         const activeColor = 'var(--c-orange)';
         const defaultColor = (scrolled || !isHomePage) ? '#3E2723' : '#FFFFFF';
-        
+
         return {
             textDecoration: 'none',
             fontFamily: 'Inter, sans-serif',
@@ -59,7 +59,7 @@ export default function Navbar() {
             }}
         >
             {/* Desktop — split layout */}
-            <div className="section-container nav-desktop" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="section-container nav-desktop" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '90px' }}>
 
                 {/* Left links */}
                 <ul style={{ display: 'flex', gap: '32px', listStyle: 'none', margin: 0, padding: '16px 0', justifyContent: 'flex-end', flex: 1 }}>
@@ -72,18 +72,43 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                {/* Centre logo */}
-                <Link href="/" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', flexShrink: 0, padding: '6px 56px' }}>
+                {/* Centre logo — crossfade between logo2 (hero) and logo (scrolled) */}
+                <Link href="/" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', flexShrink: 0, padding: '0 48px' }}>
                     <motion.div
                         whileHover={{ scale: 1.07 }}
                         transition={{ type: 'spring', stiffness: 300 }}
+                        style={{ position: 'relative', width: 76, height: 76 }}
                     >
+                        {/* logo2 — visible in hero, offset so it visually centres at larger render size */}
                         <Image
-                            src={(pathname === '/' && !scrolled) ? "/logo2.png" : "/logo.png"}
+                            src="/logo2.png"
                             alt="Himalayan SIP"
-                            width={96}
-                            height={96}
-                            style={{ display: 'block', objectFit: 'contain' }}
+                            width={130}
+                            height={130}
+                            style={{
+                                position: 'absolute',
+                                top: '50%', left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                objectFit: 'contain',
+                                mixBlendMode: 'multiply',
+                                opacity: (pathname === '/' && !scrolled) ? 1 : 0,
+                                transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                            }}
+                        />
+                        {/* logo — visible when scrolled / other pages */}
+                        <Image
+                            src="/logo.png"
+                            alt="Himalayan SIP"
+                            width={160}
+                            height={160}
+                            style={{
+                                position: 'absolute',
+                                top: '50%', left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                objectFit: 'contain',
+                                opacity: (pathname === '/' && !scrolled) ? 0 : 1,
+                                transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                            }}
                         />
                     </motion.div>
                 </Link>
@@ -103,13 +128,33 @@ export default function Navbar() {
             {/* Mobile — logo + hamburger */}
             <div className="nav-mobile-header section-container" style={{ alignItems: 'center', justifyContent: 'space-between', padding: '12px 24px' }}>
                 <Link href="/" style={{ textDecoration: 'none' }}>
-                    <Image
-                        src={(pathname === '/' && !scrolled) ? "/logo2.png" : "/logo.png"}
-                        alt="Himalayan SIP"
-                        width={60}
-                        height={60}
-                        style={{ borderRadius: '50%', objectFit: 'cover' }}
-                    />
+                    {/* Mobile logo crossfade */}
+                    <div style={{ position: 'relative', width: 48, height: 48 }}>
+                        <Image
+                            src="/logo2.png"
+                            alt="Himalayan SIP"
+                            width={48}
+                            height={48}
+                            style={{
+                                position: 'absolute', top: 0, left: 0,
+                                borderRadius: '50%', objectFit: 'cover',
+                                opacity: (pathname === '/' && !scrolled) ? 1 : 0,
+                                transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                            }}
+                        />
+                        <Image
+                            src="/logo.png"
+                            alt="Himalayan SIP"
+                            width={48}
+                            height={48}
+                            style={{
+                                position: 'absolute', top: 0, left: 0,
+                                borderRadius: '50%', objectFit: 'cover',
+                                opacity: (pathname === '/' && !scrolled) ? 0 : 1,
+                                transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                            }}
+                        />
+                    </div>
                 </Link>
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
