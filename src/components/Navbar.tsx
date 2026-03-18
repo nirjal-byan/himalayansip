@@ -77,18 +77,21 @@ export default function Navbar() {
                     <motion.div
                         whileHover={{ scale: 1.07 }}
                         transition={{ type: 'spring', stiffness: 300 }}
-                        style={{ position: 'relative', width: 76, height: 76 }}
+                        style={{ position: 'relative', width: 80, height: 80 }}
                     >
                         {/* logo2 — visible in hero, offset so it visually centres at larger render size */}
                         <Image
                             src="/logo2.png"
                             alt="Himalayan SIP"
-                            width={130}
-                            height={130}
+                            width={200}
+                            height={200}
+                            unoptimized
                             style={{
                                 position: 'absolute',
                                 top: '50%', left: '50%',
                                 transform: 'translate(-50%, -50%)',
+                                height: '95px',
+                                width: 'auto',
                                 objectFit: 'contain',
                                 mixBlendMode: 'multiply',
                                 opacity: (pathname === '/' && !scrolled) ? 1 : 0,
@@ -99,12 +102,15 @@ export default function Navbar() {
                         <Image
                             src="/logo.png"
                             alt="Himalayan SIP"
-                            width={160}
-                            height={160}
+                            width={200}
+                            height={200}
+                            unoptimized
                             style={{
                                 position: 'absolute',
                                 top: '50%', left: '50%',
                                 transform: 'translate(-50%, -50%)',
+                                height: '88px',
+                                width: 'auto',
                                 objectFit: 'contain',
                                 opacity: (pathname === '/' && !scrolled) ? 0 : 1,
                                 transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -129,15 +135,18 @@ export default function Navbar() {
             <div className="nav-mobile-header section-container" style={{ alignItems: 'center', justifyContent: 'space-between', padding: '12px 24px' }}>
                 <Link href="/" style={{ textDecoration: 'none' }}>
                     {/* Mobile logo crossfade */}
-                    <div style={{ position: 'relative', width: 48, height: 48 }}>
+                    <div style={{ position: 'relative', width: 60, height: 60 }}>
                         <Image
                             src="/logo2.png"
                             alt="Himalayan SIP"
-                            width={48}
-                            height={48}
+                            width={80}
+                            height={80}
+                            unoptimized
                             style={{
-                                position: 'absolute', top: 0, left: 0,
-                                borderRadius: '50%', objectFit: 'cover',
+                                position: 'absolute', top: '50%', left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                height: '64px', width: 'auto',
+                                borderRadius: '50%', objectFit: 'contain',
                                 opacity: (pathname === '/' && !scrolled) ? 1 : 0,
                                 transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
                             }}
@@ -145,11 +154,14 @@ export default function Navbar() {
                         <Image
                             src="/logo.png"
                             alt="Himalayan SIP"
-                            width={48}
-                            height={48}
+                            width={80}
+                            height={80}
+                            unoptimized
                             style={{
-                                position: 'absolute', top: 0, left: 0,
-                                borderRadius: '50%', objectFit: 'cover',
+                                position: 'absolute', top: '50%', left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                height: '58px', width: 'auto',
+                                borderRadius: '50%', objectFit: 'contain',
                                 opacity: (pathname === '/' && !scrolled) ? 0 : 1,
                                 transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
                             }}

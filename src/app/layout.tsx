@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     description: "A nature-based specialty coffee café and plant nursery in Lalitpur.",
     type: "website",
   },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
