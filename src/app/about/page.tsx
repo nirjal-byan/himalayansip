@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { GiCoffeeBeans, GiPlantSeed, GiSprout } from 'react-icons/gi';
-import { FaLeaf, FaHandsHelping } from 'react-icons/fa';
+import { FaLeaf } from 'react-icons/fa';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 
@@ -156,7 +156,7 @@ export default function AboutPage() {
                                     boxShadow: '0 40px 80px rgba(0,0,0,0.3)',
                                     aspectRatio: '4/5'
                                 }}>
-                                    <img src="/nursery_cafe.png" alt="Plant Nursery" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <img src="/outdoor.jpg" alt="Plant Nursery" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 </div>
                             </div>
                         </ScrollReveal>
@@ -178,17 +178,11 @@ export default function AboutPage() {
                                     border: '1px solid rgba(255,255,255,0.1)',
                                     marginBottom: '40px'
                                 }}>
-                                    <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
+                                    <div style={{ display: 'flex', gap: '16px' }}>
                                         <GiPlantSeed style={{ color: 'var(--c-orange)', fontSize: '24px' }} />
                                         <p style={{ fontSize: '14px', lineHeight: 1.6 }}>While we don't list our plants online, our nursery is open daily for physical browsing and purchase.</p>
                                     </div>
-                                    <div style={{ display: 'flex', gap: '16px' }}>
-                                        <FaHandsHelping style={{ color: 'var(--c-orange)', fontSize: '24px' }} />
-                                        <p style={{ fontSize: '14px', lineHeight: 1.6 }}>Our plant experts are on-site to help you choose the perfect addition to your home.</p>
-                                    </div>
                                 </div>
-
-                                <Link href="/contact" className="btn-pill-primary">Visit Our Nursery</Link>
                             </div>
                         </ScrollReveal>
                     </div>
@@ -204,8 +198,7 @@ export default function AboutPage() {
                     </p>
                     
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' }}>
-                        <Link href="/menu" className="btn-pill-primary">View Coffee Menu</Link>
-                        <Link href="/contact" className="btn-pill-outline">Find Us on Map</Link>
+                        <Link href="/menu" className="btn-pill-primary">View Menu</Link>
                     </div>
                 </ScrollReveal>
             </section>

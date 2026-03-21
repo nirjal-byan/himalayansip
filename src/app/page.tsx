@@ -118,26 +118,22 @@ export default function HomePage() {
         <motion.div style={{ opacity: heroOpacity, position: 'relative', zIndex: 1, textAlign: 'center', padding: '80px 24px 0', width: '100%', maxWidth: '700px', margin: '0 auto' }}>
 
 
+          <motion.span 
+            initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.8 }}
+            style={{ display: 'block', color: 'var(--c-orange)', fontSize: '13px', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '16px', fontWeight: 600 }}>
+            Welcome to
+          </motion.span>
+
           <motion.h1 className="font-serif"
             initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 0.8 }}
-            style={{ color: '#FFFFFF', fontSize: 'clamp(40px, 7vw, 84px)', fontWeight: 700, lineHeight: 1.1, marginBottom: '8px', textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 8px 32px rgba(0,0,0,0.6)' }}>
+            style={{ color: '#FFFFFF', fontSize: 'clamp(40px, 7vw, 84px)', fontWeight: 700, lineHeight: 1.1, marginBottom: '24px', textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 8px 32px rgba(0,0,0,0.6)' }}>
             Himalayan SIP
           </motion.h1>
 
-          <motion.p className="font-script"
-            initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 0.8 }}
-            style={{ color: 'var(--c-orange)', fontSize: 'clamp(22px, 4vw, 38px)', marginBottom: '8px' }}>
-            Beans &amp; Beyond
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}>
-            <BeanDivider />
-          </motion.div>
-
           <motion.p
-            initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1.3, duration: 0.7 }}
-            style={{ color: 'rgba(255,255,255,0.95)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 40px', lineHeight: 1.7, textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
-            A nature-based specialty café &amp; plant nursery at the foot of the Himalayas
+            initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 0.7 }}
+            style={{ color: 'rgba(255,255,255,0.9)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 40px', lineHeight: 1.6, fontWeight: 300, textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
+            A serene sanctuary of specialty coffee and nature.
           </motion.p>
 
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1.6, duration: 0.7 }}
